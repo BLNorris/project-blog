@@ -1,7 +1,9 @@
 require 'sinatra/base'
-require_relative 'functions'
 require 'pry'
 require 'active_record'
+
+require_relative 'ar_initial'
+require_relative 'functions'
 
 class MainProgram < Sinatra::Base
    get "/" do

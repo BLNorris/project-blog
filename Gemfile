@@ -3,7 +3,7 @@ source 'https://rubygems.org/'
 
 #prod
 gem 'sinatra'
-gem 'active_record'
+gem 'activerecord'
 
 #test
 group :test do
