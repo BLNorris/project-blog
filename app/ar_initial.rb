@@ -1,6 +1,6 @@
 ActiveRecord::Base.establish_connection(
    :adapter  => 'sqlite3',
-   :database => (ENV['RACK_ENV'] == "./app/db/test") ? './app/db/blog.test' : 'blog'
+   :database => (ENV['RACK_ENV'] == "test") ? './db/blog.test.sqlite' : './db/blog.sqlite'
 )
 
 ActiveRecord::Base.logger = Logger.new(STDERR)
@@ -12,6 +12,7 @@ ActiveRecord::Schema.define do
          table.column :last_name, :string
          table.column :username, :string
       end
+
    end
    
    unless ActiveRecord::Base.connection.tables.include? 'posts'
@@ -21,6 +22,7 @@ ActiveRecord::Schema.define do
          table.column :content, :text
          table.column :time, :datetime
          table.column :user_id, :integer
+         table.timestamps
       end
    end
    
@@ -32,6 +34,7 @@ ActiveRecord::Schema.define do
          table.column :time, :datetime
          table.column :user_id, :integer
          table.column :post_id, :integer
+         table.timestamps
       end
    end
    
@@ -42,6 +45,7 @@ ActiveRecord::Schema.define do
          table.column :content, :text
          table.column :time, :datetime
          table.column :user_id, :integer
+         table.timestamps
       end
    end
    

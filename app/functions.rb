@@ -22,3 +22,10 @@ class Setting < ActiveRecord::Base
    #belongs_to :user #not sure if this will work the way I thought it would
    
 end
+
+module InitializeDB
+   def self.init
+   User.create(:username => 'Admin')
+   Setting.create(:user_id => User.find_by_username("Admin").id)
+   end
+end
