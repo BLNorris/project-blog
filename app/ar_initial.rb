@@ -1,6 +1,6 @@
 ActiveRecord::Base.establish_connection(
    :adapter  => 'sqlite3',
-   :database => (ENV['RACK_ENV'] == "test") ? 'blog.test' | 'blog'
+   :database => (ENV['RACK_ENV'] == "test") ? 'blog.test' : 'blog'
 )
 
 ActiveRecord::Base.logger = Logger.new(STDERR)
@@ -15,7 +15,7 @@ ActiveRecord::Schema.define do
    end
    
    unless ActiveRecord::Base.connection.tables.include? 'posts'
-      create_table posts do |table|
+      create_table :posts do |table|
          table.column :user_id, :integer
          table.column :title, :string
          table.column :content, :text
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define do
    end
    
    unless ActiveRecord::Base.connection.tables.include? 'comments'
-      create_table comments do |table|
+      create_table :comments do |table|
          table.column :user_id, :integer
          table.column :title, :string
          table.column :content, :text
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define do
    end
    
    unless ActiveRecord::Base.connection.tables.include? 'pages'
-      create_table pages do |table|
+      create_table :pages do |table|
          table.column :user_id, :integer
          table.column :title, :string
          table.column :content, :text
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define do
    end
    
    unless ActiveRecord::Base.connection.tables.include? 'settings'
-      create_table comments do |table|
+      create_table :settings do |table|
          table.column :user_id, :integer
          table.column :site_title, :string
          table.column :site_name, :string
