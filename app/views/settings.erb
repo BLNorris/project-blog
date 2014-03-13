@@ -1,0 +1,22 @@
+<form method="post" action="/settings">
+  
+  
+<div class="setting">Admin User  <%= User.find(@set.user_id).username %>
+
+<select name="user_id">
+  
+  <% users = User.find(:all) %>
+  <% users.each  do |u| %>
+    <option value="<%= u.id %>"><%= u.username %></option>
+  <% end %>
+</select></div>
+<div class="setting">Site Title  <input name="site_title" value="<%= @set.site_title %>"></div>
+<div class="setting">Site Name  <input name="site_name" value="<%= @set.site_name %>">  </div>
+<div class="setting">Date Format  <input name="date_format" value="<%= @set.date_format %>"></div>
+<div class="setting">Time Format  <input name="time_format" value="<%= @set.time_format %>"></div>
+<div class="setting">Posts per page:  <input name="main_posts" value="<%= @set.main_posts %>"></div>
+
+
+  <input type="submit">
+  
+</form>
