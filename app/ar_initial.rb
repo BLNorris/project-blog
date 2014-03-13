@@ -48,11 +48,11 @@ ActiveRecord::Schema.define do
    unless ActiveRecord::Base.connection.tables.include? 'settings'
       create_table :settings do |table|
          table.column :user_id, :integer
-         table.column :site_title, :string
-         table.column :site_name, :string
+         table.column :site_title, :string, options = {:default => "blog_title"}
+         table.column :site_name, :string, options = {:default =>  "blog_name"}
          table.column :date_format, :string
          table.column :time_format, :string
-         table.column :main_posts, :integer
+         table.column :main_posts, :integer, options = {:default =>  6}
          table.column :user_id, :integer
       end
    end
