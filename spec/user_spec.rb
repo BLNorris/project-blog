@@ -4,6 +4,7 @@ require 'spec_helper'
 describe User do
    
    before(:all) do
+      
       #do something before all tests
    end
 
@@ -11,10 +12,16 @@ describe User do
       #do something before each test
    end
 
- #Test to make sure it can do a thing  
-   it 'can do a thing' do
-
-      #expect(do_a_thing()).to eq(true)
+   it "creates a user" do
+     andy = User.create(:first_name => "Michael", :last_name => "Michael", :username => "MM" )
+     
+     andytest = User.find(andy.id)
+     expect(andytest.first_name).to eq("Michael")
+   end
+   
+   after(:all) do
+      #do something after all tests
+      User.delete_all
    end
    
 end
