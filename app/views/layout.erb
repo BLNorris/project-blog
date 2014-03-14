@@ -4,21 +4,26 @@
 		<link rel = "stylesheet" type="text/css" href="/animate.css">	
 		<link rel = "stylesheet" type="text/css" href="/theme.css">	
 
-    
+    <a href="/">
     <H1 class = "blog_name"><%= @set.site_name %></H1>
+    </a>
     <h3>
-      <a href="/">Home</a>  
-      <a href="/settings">Settings</a>  
-      <a href="/users">Users</a>  
-      <a href="/posts">Posts</a>  
-      <a href="/pages">Pages</a>  
+
+ 
       
       
       </H3>
 	</head>
 	<body>
-
-<%= yield %>
-
+    <div class="content">
+        <%= yield %>
+    </div>
+    <div class="sidebar">
+        <a href="/settings">Settings</a>  <br>
+        <a href="/users">Users</a>  <br>
+        <a href="/posts">Posts</a>  <br>
+        <a href="/pages">Pages</a>  <br>
+    </div>
 	</body>
+  
 </html>

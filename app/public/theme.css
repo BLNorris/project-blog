@@ -2,19 +2,25 @@
 
 body {
    background-color:#636363;
-}
-
-
-
-main{
-	width:420;
-	text-align:center;
+   width: 90%;
 	margin:0 auto;
 }
 
 
+
+.content{
+	width:70%;
+
+	margin:0 auto;
+   float:left;
+}
+.sidebar{
+   width:25%;
+   float:right;
+}
+
 .post_title{
-   font-size:2.5em;
+   font-size:2em;
    
 }
 .post_content{
@@ -22,7 +28,16 @@ main{
    
 }
 
+.user_table{
+   border:2px solid black;
+}
 
+.user_table thead tr td{
+   border: 1px solid blue;
+}
+.user_table tbody tr{
+   outline: 1px solid blue;
+}
 input[type=text]
 {
     background-color: #BFBDBD;

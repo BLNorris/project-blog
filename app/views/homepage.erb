@@ -1,8 +1,9 @@
 <% @posts.first(@set.main_posts).each do |p| %>
   <div class="post_title">
-    <%= p.title %>
+    <a href="/post/<%= p.id %>"><%= p.title %></a>
   </div>
   <div class="post_content">
     <%= p.content %>
   </div>
 <% end %>
+

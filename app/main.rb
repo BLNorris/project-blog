@@ -1,6 +1,9 @@
 require 'sinatra/base'
 require 'pry'
 require 'active_record'
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 
 require_relative 'ar_initial'
 require_relative 'functions'
@@ -22,9 +25,8 @@ class MainProgram < Sinatra::Base
       erb :new_user
    end
    post "/new_user" do
-      
 
-      user = User.create do |u|
+      User.create do |u|
         u.first_name = params[:first_name]
         u.last_name = params[:last_name]
         u.username = params[:username]
@@ -69,7 +71,13 @@ class MainProgram < Sinatra::Base
       erb :new_post
    end
    post "/new_post" do
-      Post.create(:title => params[:title], :content => params[:content])
+      
+       Post.create do |p|
+          p.title = params[:title]
+          p.content = params[:content]
+          p.user_id = params[:user_id]
+       end
+       
       redirect to("/posts")
    end
    
@@ -100,15 +108,45 @@ class MainProgram < Sinatra::Base
    end
    
    get "/new_page" do
+      erb :new_page
+   end
+   
+   post "/new_page" do
+      Page.create do |p|
+         p.title = params[:title]
+         p.content = params[:content]
+         p.user_id = params[:user_id]
+      end
+      
+     redirect to("/pages")
    end
    
    get "/edit_page/:page_id" do
+      @page = Page.find(params[:post_id])
+      
+      erb :edit_page
    end
    
+   post "/edit_page/" do
+      
+   page = Page.find(params[:post_id])
+   title = params[:title]
+   content = params[:content]
+   author = params[:user_id]
+   page.update(:title => title, :content => content, :user_id => author)
+   page.save
+   
+   redirect to("/pages")
+   end
+
    get "/page/:page_id" do
+      @page = Page.find(params[:page_id])
+      erb :page
    end
    
    get "/pages" do
+      @pages = Page.all
+      erb :pages
    end
    
    get "/settings" do

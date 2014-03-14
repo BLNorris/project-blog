@@ -1,7 +1,9 @@
 <% @posts.each do |p| %>
   <a href="/post/<%= p.id %>">
-    <div class="post_title"><%= p.title %> : <%= p.user.username %> : <%= p.created_on %></div> 
+    <div class="post_title"><%= p.title %></div> 
   </a>
+    By <%= p.user.username %> : <%= p.created_on %>
+  
 <% end %>
 
 <br>
