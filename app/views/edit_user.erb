@@ -1,0 +1,9 @@
+<form method="post" action="/edit_user">
+  <input type="hidden" name="user_id" value=<%= @user.id %>>
+<div class="edit_user">First Name  <input name="first_name" value=<%= @user.first_name %>></div>
+<div class="edit_user">Last Name  <input name="last_name" value=<%= @user.last_name %>>  </div>
+<div class="edit_user">Username  <input name="username" value=<%= @user.username %>></div>
+
+<input type="submit">
+  
+</form>

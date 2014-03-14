@@ -1,0 +1,8 @@
+<% @posts.each do |p| %>
+  <a href="/post/<%= p.id %>">
+    <div class="post_title"><%= p.title %> : <%= p.user.username %> : <%= p.created_on %></div> 
+  </a>
+<% end %>
+
+<br>
+<a href="/new_post">New Post</a>

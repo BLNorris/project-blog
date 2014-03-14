@@ -1,0 +1,21 @@
+<form method="post" action="/edit_post">
+  <input type="hidden" value=<%= @post.id %> name="post_id">
+  
+<div class="edit_post">Title  
+  <input name="title" value=<%= @post.title %>>
+</div>
+<div class="edit_post">Body   
+    <textarea rows="4" cols="50" name="content" ><%= @post.content %> </textarea> 
+</div>
+<div class="edit_post">Author 
+  <select name="user_id">
+  
+  <% users = User.find(:all) %>
+  <% users.each  do |u| %>
+    <option value="<%= u.id %>" <%= "selected" if u.id = @post.user_id  %> ><%= u.username %></option>
+  <% end %>
+  </select>
+</div>
+<input type="submit">
+  
+</form>
