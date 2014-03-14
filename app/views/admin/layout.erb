@@ -1,0 +1,31 @@
+<html>
+	<head>
+    
+		<title><%= @set.site_title %></title>
+		<link rel = "stylesheet" type="text/css" href="/animate.css">	
+		<link rel = "stylesheet" type="text/css" href="/theme.css">	
+
+    
+    <header>
+    <div class = "blog_name"><%= @set.site_name %></div>
+    
+    <div class = "header_nav"><% #put page links here %>
+      <a href="/">Home</a>
+    </header>
+      
+      
+    </div>
+	</head>
+	<body>
+    <div class="content">
+        <%= yield %>
+    </div>
+    <div class="sidebar">
+        <a href="/admin/settings">Settings</a>  <br>
+        <a href="/admin/users">Users</a>  <br>
+        <a href="/admin/posts">Posts</a>  <br>
+        <a href="/admin/pages">Pages</a>  <br>
+    </div>
+	</body>
+  
+</html>
