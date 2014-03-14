@@ -8,14 +8,13 @@ require_relative 'functions'
 class MainProgram < Sinatra::Base
    
    before do
-      User.find_or_create_by_id(0, :username => 'Admin')
-      @set = Setting.find_or_create_by_id(0)
+      User.find_or_create_by_id(0, :first_name => "Default", :last_name => "User", :username => 'Admin')
+      @set = Setting.find_or_create_by_id(0, :user_id => 0)
    end
       
    #homepage
    get "/" do
-
-      
+      @posts = Post.all
       erb :homepage
    end
    
@@ -31,7 +30,7 @@ class MainProgram < Sinatra::Base
         u.username = params[:username]
       end
       
-      redirect to("/new_user")
+      redirect to("/users")
    end
    
    get "/users" do
@@ -44,16 +43,60 @@ class MainProgram < Sinatra::Base
       erb :user
    end
    
+   post "/delete_user/:user_id" do
+      User.delete(params[:user_id])
+      redirect to("/users")
+   end
+   
+   get "/edit_user/:user_id" do
+      @user = User.find(params[:user_id])
+      
+      erb :edit_user
+   end
+   
+   post "/edit_user" do
+      user = User.find(params[:user_id])
+
+        user.first_name = params[:first_name]
+        user.last_name = params[:last_name]
+        user.username = params[:username]
+        user.save
+        
+      redirect to("/users")
+   end
+   
    get "/new_post" do
+      erb :new_post
+   end
+   post "/new_post" do
+      Post.create(:title => params[:title], :content => params[:content])
+      redirect to("/posts")
    end
    
    get "/post/:post_id" do
+      @post = Post.find(params[:post_id])
+      erb :post
    end
    
    get "/edit_post/:post_id" do
+      @post = Post.find(params[:post_id])
+      erb :edit_post
+   end
+   
+   post "/edit_post" do
+      post = Post.find(params[:post_id])
+      title = params[:title]
+      content = params[:content]
+      author = params[:user_id]
+      post.update(:title => title, :content => content, :user_id => author)
+      post.save
+      
+      redirect to("/posts")
    end
    
    get "/posts" do
+       @posts = Post.all
+       erb :posts
    end
    
    get "/new_page" do

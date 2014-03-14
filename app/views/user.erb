@@ -1,3 +1,11 @@
+<%= @user.id %><br>
 <%= @user.first_name %><br>
 <%= @user.last_name %><br>
 <%= @user.username %><br>
+
+
+<a href="/edit_user/<%= @user.id %>">Edit User</a>
+<form method="post" action="/delete_user/<%= @user.id %>">
+  <input type="submit" value="Delete User">
+</form>
+

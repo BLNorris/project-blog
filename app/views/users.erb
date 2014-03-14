@@ -1,5 +1,6 @@
 <% @users.each do |u| %>
   <div><a href="/user/<%= u.id %>">
-    <%= u.first_name %> <%= u.last_name %> : <%= u.username %>
+  <%= u.id %>: <%= u.first_name %> <%= u.last_name %> : <%= u.username %>
   </a></div>
 <% end %>
+<a href="/new_user">Create New User</a>
