@@ -13,6 +13,7 @@ class MainProgram < Sinatra::Base
    before do
       User.find_or_create_by_id(0, :first_name => "Default", :last_name => "User", :username => 'Admin')
       @set = Setting.find_or_create_by_id(0, :user_id => 0)
+      
    end
       
    #homepage
@@ -21,42 +22,36 @@ class MainProgram < Sinatra::Base
       erb :homepage
    end
    
-   get "/new_user" do
-      erb :new_user
+   get "/admin/new_user" do
+      erb :"admin/new_user" , :layout => :"admin/layout"
    end
-   post "/new_user" do
-
-      User.create do |u|
-        u.first_name = params[:first_name]
-        u.last_name = params[:last_name]
-        u.username = params[:username]
-      end
-      
-      redirect to("/users")
+   post "/admin/new_user" do
+      Create.user(params)
+      redirect to("/admin/users")
    end
    
-   get "/users" do
+   get "/admin/users" do
       @users = User.all
-      erb :users
+      erb :"admin/users" , :layout => :"admin/layout"
    end
    
-   get "/user/:user_id" do
+   get "/admin/user/:user_id" do
       @user = User.find(params[:user_id])
-      erb :user
+      erb :"admin/user" , :layout => :"admin/layout"
    end
    
-   post "/delete_user/:user_id" do
+   post "/admin/delete_user/:user_id" do
       User.delete(params[:user_id])
-      redirect to("/users")
+      redirect to("/admin/users")
    end
    
-   get "/edit_user/:user_id" do
+   get "/admin/edit_user/:user_id" do
       @user = User.find(params[:user_id])
       
-      erb :edit_user
+      erb :"admin/edit_user" , :layout => :"admin/layout"
    end
    
-   post "/edit_user" do
+   post "/admin/edit_user" do
       user = User.find(params[:user_id])
 
         user.first_name = params[:first_name]
@@ -64,13 +59,13 @@ class MainProgram < Sinatra::Base
         user.username = params[:username]
         user.save
         
-      redirect to("/users")
+      redirect to("/admin/users")
    end
    
-   get "/new_post" do
-      erb :new_post
+   get "/admin/new_post" do
+      erb :"admin/new_post" , :layout => :"admin/layout"
    end
-   post "/new_post" do
+   post "/admin/new_post" do
       
        Post.create do |p|
           p.title = params[:title]
@@ -78,7 +73,7 @@ class MainProgram < Sinatra::Base
           p.user_id = params[:user_id]
        end
        
-      redirect to("/posts")
+      redirect to("/admin/posts")
    end
    
    get "/post/:post_id" do
@@ -86,12 +81,12 @@ class MainProgram < Sinatra::Base
       erb :post
    end
    
-   get "/edit_post/:post_id" do
+   get "/admin/edit_post/:post_id" do
       @post = Post.find(params[:post_id])
-      erb :edit_post
+      erb :"admin/edit_post" , :layout => :"admin/layout"
    end
    
-   post "/edit_post" do
+   post "/admin/edit_post" do
       post = Post.find(params[:post_id])
       title = params[:title]
       content = params[:content]
@@ -99,35 +94,35 @@ class MainProgram < Sinatra::Base
       post.update(:title => title, :content => content, :user_id => author)
       post.save
       
-      redirect to("/posts")
+      redirect to("/admin/posts")
    end
    
-   get "/posts" do
+   get "/admin/posts" do
        @posts = Post.all
-       erb :posts
+       erb :"admin/posts" , :layout => :"admin/layout"
    end
    
-   get "/new_page" do
-      erb :new_page
+   get "/admin/edit_page" do
+      erb :"admin/new_page" , :layout => :"admin/layout"
    end
    
-   post "/new_page" do
+   post "/admin/edit_page" do
       Page.create do |p|
          p.title = params[:title]
          p.content = params[:content]
          p.user_id = params[:user_id]
       end
       
-     redirect to("/pages")
+     redirect to("/admin/pages")
    end
    
-   get "/edit_page/:page_id" do
+   get "/admin/edit_page/:page_id" do
       @page = Page.find(params[:post_id])
       
-      erb :edit_page
+      erb :"admin/edit_page" , :layout => :"admin/layout"
    end
    
-   post "/edit_page/" do
+   post "/admin/edit_page/" do
       
    page = Page.find(params[:post_id])
    title = params[:title]
@@ -136,7 +131,7 @@ class MainProgram < Sinatra::Base
    page.update(:title => title, :content => content, :user_id => author)
    page.save
    
-   redirect to("/pages")
+   redirect to("/admin/pages")
    end
 
    get "/page/:page_id" do
@@ -144,17 +139,17 @@ class MainProgram < Sinatra::Base
       erb :page
    end
    
-   get "/pages" do
+   get "/admin/pages" do
       @pages = Page.all
-      erb :pages
+      erb :"admin/pages" , :layout => :"admin/layout"
    end
    
-   get "/settings" do
+   get "/admin/settings" do
       
-      erb :settings
+      erb :"admin/settings" , :layout => :"admin/layout"
    end
    
-   post"/settings" do
+   post"/admin/settings" do
       params.each do |k,v|
          if v == ""
             params[k] = nil
@@ -172,14 +167,14 @@ class MainProgram < Sinatra::Base
       
       @set.save
       
-      redirect to("/settings")
+      redirect to("/admin/settings")
       
    end
    
-   get "/new_comment" do
+   get "/admin/edit_comment" do
    end
    
-   get "/edit_comment/:comment_id" do
+   get "/admin/edit_comment/:comment_id" do
    end
 end
 

@@ -1,11 +1,18 @@
-
-
-body {
-   background-color:#636363;
-   width: 90%;
-	margin:0 auto;
+html{
+   font-size:13px;
 }
 
+body {
+   background-color:white;
+   width: 90%;
+	margin:0 auto;
+   font-size:1em;
+}
+
+a:link {color:#5E2816; text-decoration:none;}      /* unvisited link */
+a:visited {color:#5E2816; text-decoration:none;}  /* visited link */
+a:hover {color:#5E2816; text-decoration:none;}  /* mouse over link */
+a:active {color:#5E2816; text-decoration:none;}  /* selected link */
 
 
 .content{
@@ -13,30 +20,73 @@ body {
 
 	margin:0 auto;
    float:left;
+   box-shadow: 10px 10px 5px;
+   background-color: #BA9462;
+   border-radius:10px;
+   text-indent:30px;
+   margin:15px auto;
+   padding:0.6em;
 }
 .sidebar{
    width:25%;
    float:right;
+   background-color: #BA9462;
+   border-radius:10px;
+
+   margin:15px auto;
+   padding:0.6em;
+}
+
+header{
+   background-color: #DBE8D6;
+   border-radius:10px;
+   text-indent:30px;
+   box-shadow: 10px 10px 5px;
+   height:4em;
+   
+}
+.blog_name{
+   vertical-align:middle;
+   font-size:2em;
+   color:#5E2816;
+}
+
+.posts_head{
+   margin:15px;
 }
 
 .post_title{
+   box-shadow: 10px 10px 5px;
    font-size:2em;
-   
-}
-.post_content{
-   font-size:1.2em;
-   
+   background-color: #DBE8D6;
+   border-radius:10px;
+   text-indent:30px;
+   margin:15px;
 }
 
+.post_content{
+   box-shadow: 10px 10px 5px;
+   font-size:1.2em;
+   border-radius:10px;
+   text-indent:30px;
+   margin:15px;
+}
+
+.post, .settings, .posts, .pages, .users{
+
+}
+
+
+
 .user_table{
-   border:2px solid black;
+   border:0px solid black;
 }
 
 .user_table thead tr td{
-   border: 1px solid blue;
+   
 }
 .user_table tbody tr{
-   outline: 1px solid blue;
+   outline: 1px solid black;
 }
 input[type=text]
 {

@@ -4,25 +4,36 @@
 		<link rel = "stylesheet" type="text/css" href="/animate.css">	
 		<link rel = "stylesheet" type="text/css" href="/theme.css">	
 
-    <a href="/">
-    <H1 class = "blog_name"><%= @set.site_name %></H1>
-    </a>
-    <h3>
-
- 
+    <header>
+    <div class = "blog_name"><%= @set.site_name %></div>
+    
+    <div class = "header_nav"><% #put page links here %>
+      <a href="/">Home</a>
+    </header>
       
       
-      </H3>
 	</head>
 	<body>
     <div class="content">
-        <%= yield %>
+      <%= yield %>
     </div>
     <div class="sidebar">
-        <a href="/settings">Settings</a>  <br>
-        <a href="/users">Users</a>  <br>
-        <a href="/posts">Posts</a>  <br>
-        <a href="/pages">Pages</a>  <br>
+      
+      Recent Posts
+      <% posts = Post.find(:all, :order => "id desc", :limit => 16).reverse %>
+        <% posts.each do |p|%>
+          <div>
+            <a href="/post/<%= p.id %>">
+              <%= p.title %>
+            </a>
+          
+          </div>
+        <% end %>
+      
+      
+      <div class="admin_link">
+        <a href="/admin/settings">Admin</a>  <br>
+      </div>
     </div>
 	</body>
   

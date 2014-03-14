@@ -1,10 +1,17 @@
+<div class="posts"><div class="posts_head">
+
+<a href="/admin/new_post">New Post</a>
+</div>
+
 <% @posts.each do |p| %>
   <a href="/post/<%= p.id %>">
     <div class="post_title"><%= p.title %></div> 
   </a>
-    By <%= p.user.username %> : <%= p.created_on %>
+    <div class="post_content">
+    By <%= p.user.username %> at <%= p.created_on %> --- 
+      <a href="/admin/edit_post/<%= p.id %>">Edit post</a>
+    </div> 
   
 <% end %>
+</div>
 
-<br>
-<a href="/new_post">New Post</a>

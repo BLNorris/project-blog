@@ -1,23 +1,21 @@
-
-<table class = "user_table">
-  <thead>
-    <tr>
-      <td>User ID</td>
-      <td>Full Name</td>
-      <td>Username</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |u| %>
+<div class="users">
+  <table class = "user_table">
+    <thead>
       <tr>
-        <td><%= u.id %></td>
-        <td><%= u.first_name %> <%= u.last_name %></td>
-        <td><%= u.username %></td>
-        <td><a href="/edit_user/<%= u.id %>">Edit User</td>
-      </tr>  
-  </tbody>
-<% end %>
-</table>
-<a href="/new_user">Create New User</a>
-
-
+        <td>Full Name</td>
+        <td>Username</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |u| %>
+        <tr>
+          <td><%= u.first_name %> <%= u.last_name %></td>
+          <td><%= u.username %></td>
+          <td><a href="/admin/edit_user/<%= u.id %>">Edit User</td>
+        </tr>  
+      <% end %>
+    </tbody>
+  </table>
+  <a href="/admin/new_user">Create New User</a>
+</div>
+  

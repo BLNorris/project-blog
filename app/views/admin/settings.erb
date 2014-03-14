@@ -1,7 +1,8 @@
-<form method="post" action="/settings">
+<div class="settings">
+<form method="post" action="/admin/settings">
   
   
-<div class="setting">Admin User  <%= User.find(@set.user_id).username %>
+Admin User  <%= User.find(@set.user_id).username %>
 
 <select name="user_id">
   
@@ -9,7 +10,7 @@
   <% users.each  do |u| %>
     <option value="<%= u.id %>"><%= u.username %></option>
   <% end %>
-</select></div>
+</select>
 <div class="setting">Site Title  <input name="site_title" value="<%= @set.site_title %>"></div>
 <div class="setting">Site Name  <input name="site_name" value="<%= @set.site_name %>">  </div>
 <div class="setting">Date Format  <input name="date_format" value="<%= @set.date_format %>"></div>
@@ -20,3 +21,4 @@
   <input type="submit">
   
 </form>
+</div>

@@ -29,3 +29,13 @@ module InitializeDB
    Setting.create(:user_id => User.find_by_username("Admin").id)
    end
 end
+
+module Create
+   def self.user(params)
+      User.create do |u|
+        u.first_name = params[:first_name]
+        u.last_name = params[:last_name]
+        u.username = params[:username]
+      end
+   end
+end

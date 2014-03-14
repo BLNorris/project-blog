@@ -1,8 +1,10 @@
-<% @pages.each do |p| %>
-  <a href="/page/<%= p.id %>">
-    <div class="page_title"><%= p.title %> : <%= p.user.username %> : <%= p.created_on %></div> 
-  </a>
-<% end %>
+<div class="pages">
+  <% @pages.each do |p| %>
+    <a href="/page/<%= p.id %>">
+      <div class="page_title"><%= p.title %> : <%= p.user.username %> : <%= p.created_on %></div> 
+    </a>
+  <% end %>
 
-<br>
-<a href="/new_page">New Page</a>
+  <br>
+  <a href="/admin/new_page">New Page</a>
+</div>
