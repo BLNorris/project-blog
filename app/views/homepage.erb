@@ -1,4 +1,6 @@
-<% @posts.first(@set.main_posts).each do |p| %>
+
+
+<% @posts.each do |p| %>
   <div class="post">
     <div class="post_title">
       <a href="/post/<%= p.id %>"><%= p.title %></a>
@@ -8,3 +10,11 @@
     </div>
   </div>
 <% end %>
+
+<% #pagination %>
+<div class="pagination">
+Page 
+<% @post_pages.each do |pp| %>
+  <a href="/?page=<%= pp.index +1 %>"><%= pp.index + 1 %></a>
+<% end %>
+</div>

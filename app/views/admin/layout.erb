@@ -11,6 +11,9 @@
     
     <div class = "header_nav"><% #put page links here %>
       <a href="/">Home</a>
+      <% @pages.each do |p| %>
+        | <a href="/page/<%= p.id %>"><%= p.title %></a>
+        <% end %>
     </header>
       
       

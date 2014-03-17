@@ -3,6 +3,7 @@
     <a href="/page/<%= p.id %>">
       <div class="page_title"><%= p.title %> : <%= p.user.username %> : <%= p.created_on %></div> 
     </a>
+    <a href="/admin/edit_page/<%= p.id %>">Edit page</a>
   <% end %>
 
   <br>

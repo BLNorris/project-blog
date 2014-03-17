@@ -13,12 +13,19 @@ class MainProgram < Sinatra::Base
    before do
       User.find_or_create_by_id(0, :first_name => "Default", :last_name => "User", :username => 'Admin')
       @set = Setting.find_or_create_by_id(0, :user_id => 0)
-      
+      @pages = Page.all
    end
       
    #homepage
    get "/" do
-      @posts = Post.all
+      @page = params{:page} || 1
+      posts = Post.all
+      @post_pages = []
+      posts.each_slice(100) do |slice|
+         @post_pages << slice
+      end
+      @posts = @post_pages[@page - 1]
+      
       erb :homepage
    end
    
@@ -103,11 +110,11 @@ class MainProgram < Sinatra::Base
        erb :"admin/posts" , :layout => :"admin/layout"
    end
    
-   get "/admin/edit_page" do
+   get "/admin/new_page" do
       erb :"admin/new_page" , :layout => :"admin/layout"
    end
    
-   post "/admin/edit_page" do
+   post "/admin/new_page" do
       Page.create do |p|
          p.title = params[:title]
          p.content = params[:content]
@@ -118,12 +125,12 @@ class MainProgram < Sinatra::Base
    end
    
    get "/admin/edit_page/:page_id" do
-      @page = Page.find(params[:post_id])
+      @page = Page.find(params[:page_id])
       
       erb :"admin/edit_page" , :layout => :"admin/layout"
    end
    
-   post "/admin/edit_page/" do
+   post "/admin/edit_page" do
       
    page = Page.find(params[:post_id])
    title = params[:title]

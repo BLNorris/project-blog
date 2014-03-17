@@ -1,0 +1,24 @@
+<div class="pages">
+  <form method="post" action="/admin/edit_page">
+    <input type="hidden" value=<%= @page.id %> name="post_id">
+  
+    <div class="edit_page">Title  
+      <input name="title" value=<%= @page.title %>>
+    </div>
+    <div class="edit_page">Body   
+        <textarea rows="4" cols="50" name="content" ><%= @page.content %> </textarea> 
+    </div>
+    <div class="edit_page">Author 
+      <select name="user_id">
+  
+      
+      <% User.find(:all).each  do |u| %>
+        <option value="<%= u.id %>" <%= "selected" if u.id = @page.user_id  %> ><%= u.username %></option>
+      <% end %>
+      </select>
+    </div>
+
+    <input type="submit">
+  
+  </form>
+</div>

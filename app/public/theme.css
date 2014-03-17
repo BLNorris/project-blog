@@ -18,7 +18,7 @@ header{
    background-color: #DBE8D6;
    border-radius:10px;
    text-indent:30px;
-   box-shadow: 4px 4px 5px;
+   box-npshadow: 4px 4px 5px;
    height:4em;
    
 }
@@ -34,7 +34,7 @@ header{
 
 	margin:0 auto;
    float:left;
-   box-shadow: 5px 4px 5px;
+   box-npshadow: 5px 4px 5px;
    background-color: #BA9462;
    border-radius:10px;
    text-indent:30px;
@@ -46,7 +46,7 @@ header{
    float:right;
    background-color: #BA9462;
    border-radius:10px;
-   box-shadow: 5px 4px 5px;
+   box-npshadow: 5px 4px 5px;
    margin:15px auto;
    padding:0.6em;
 }
@@ -56,7 +56,7 @@ header{
 }
 
 .post_title{
-   box-shadow: 4px 4px 5px;
+   box-npshadow: 4px 4px 5px;
    font-size:2em;
    background-color: #DBE8D6;
    border-radius:10px;
@@ -66,7 +66,7 @@ header{
 
 .post_content, .comments{
    background-color: #9A7442;
-   box-shadow: 4px 4px 5px;
+   box-npshadow: 4px 4px 5px;
    font-size:1.2em;
    border-radius:10px;
    text-indent:30px;
@@ -80,7 +80,7 @@ header{
 
 .comment{
    background-color: #7A5422;
-   box-shadow: 4px 4px 5px;
+   box-npshadow: 4px 4px 5px;
    font-size:1.2em;
    border-radius:10px;
    text-indent:30px;
@@ -106,7 +106,7 @@ input[type=text]
     height: 28px;
     padding-left:10px;
     width: 150px;
-    box-shadow: 2px 2px 0 #828181 inset;
+    box-npshadow: 2px 2px 0 #828181 inset;
 	 margin:10px;
 	 text-align:center;
 	 font-size:20px;
