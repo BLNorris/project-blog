@@ -14,13 +14,27 @@ a:visited {color:#5E2816; text-decoration:none;}  /* visited link */
 a:hover {color:#5E2816; text-decoration:none;}  /* mouse over link */
 a:active {color:#5E2816; text-decoration:none;}  /* selected link */
 
+header{
+   background-color: #DBE8D6;
+   border-radius:10px;
+   text-indent:30px;
+   box-shadow: 4px 4px 5px;
+   height:4em;
+   
+}
+
+.blog_name{
+   vertical-align:middle;
+   font-size:2em;
+   color:#5E2816;
+}
 
 .content{
 	width:70%;
 
 	margin:0 auto;
    float:left;
-   box-shadow: 10px 10px 5px;
+   box-shadow: 5px 4px 5px;
    background-color: #BA9462;
    border-radius:10px;
    text-indent:30px;
@@ -32,23 +46,9 @@ a:active {color:#5E2816; text-decoration:none;}  /* selected link */
    float:right;
    background-color: #BA9462;
    border-radius:10px;
-
+   box-shadow: 5px 4px 5px;
    margin:15px auto;
    padding:0.6em;
-}
-
-header{
-   background-color: #DBE8D6;
-   border-radius:10px;
-   text-indent:30px;
-   box-shadow: 10px 10px 5px;
-   height:4em;
-   
-}
-.blog_name{
-   vertical-align:middle;
-   font-size:2em;
-   color:#5E2816;
 }
 
 .posts_head{
@@ -56,7 +56,7 @@ header{
 }
 
 .post_title{
-   box-shadow: 10px 10px 5px;
+   box-shadow: 4px 4px 5px;
    font-size:2em;
    background-color: #DBE8D6;
    border-radius:10px;
@@ -64,19 +64,29 @@ header{
    margin:15px;
 }
 
-.post_content{
-   box-shadow: 10px 10px 5px;
+.post_content, .comments{
+   background-color: #9A7442;
+   box-shadow: 4px 4px 5px;
    font-size:1.2em;
    border-radius:10px;
    text-indent:30px;
    margin:15px;
+   padding:15px;
 }
 
 .post, .settings, .posts, .pages, .users{
 
 }
 
-
+.comment{
+   background-color: #7A5422;
+   box-shadow: 4px 4px 5px;
+   font-size:1.2em;
+   border-radius:10px;
+   text-indent:30px;
+   margin:15px;
+   padding:15px;
+}
 
 .user_table{
    border:0px solid black;

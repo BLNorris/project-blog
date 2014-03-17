@@ -78,6 +78,7 @@ class MainProgram < Sinatra::Base
    
    get "/post/:post_id" do
       @post = Post.find(params[:post_id])
+      @comments = @post.comments
       erb :post
    end
    
@@ -170,12 +171,24 @@ class MainProgram < Sinatra::Base
       redirect to("/admin/settings")
       
    end
-   
-   get "/admin/edit_comment" do
+
+   get "/new_comment/:post_id" do
+      @post_id = params[:post_id]
+      
+      erb :new_comment
+   end
+      
+   post "/post_new_comment/:post_id" do
+      Comment.create do |p|
+         p.title = params[:title]
+         p.content = params[:content]
+         p.user_id = params[:user_id]
+         p.post_id = params[:post_id]
+      end
+      
+      redirect to("/post/#{params[:post_id]}")
    end
    
-   get "/admin/edit_comment/:comment_id" do
-   end
 end
 
 

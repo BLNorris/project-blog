@@ -7,3 +7,18 @@
     <%= @post.content %>
   </div>
 </div>
+
+
+<div class="comments">
+  <div><a href="/new_comment/<%= @post.id %>">New Comment</a></div>
+  <% @comments.each do |c| %>
+    <div class="comment">
+      <div class="comment_title">
+        <%= c.title %>    Posted by <%= c.user.username %>
+      </div>
+      <div class="comment_content">
+        <%= c.content %>
+      </div>
+    </div>
+  <% end %>
+</div>
