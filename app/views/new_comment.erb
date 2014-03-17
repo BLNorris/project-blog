@@ -1,0 +1,16 @@
+<form method="post" action="/post_new_comment/<%= @post_id %>">
+  
+  <input type="hidden">
+<div class="new_comment">Title  <input name="title"></div>
+<div class="new_comment">Body   <textarea rows="4" cols="50" name="content"> </textarea> </div>
+<div class="new_comment">Author 
+  <select name="user_id">
+  <% users = User.find(:all) %>
+    <% users.each  do |u| %>
+      <option value="<%= u.id %>"><%= u.username %></option>
+    <% end %>
+  </select>
+</div>
+<input type="submit">
+  
+</form>
