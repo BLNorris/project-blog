@@ -14,7 +14,7 @@
 <% #pagination %>
 <div class="pagination">
 Page 
-<% @post_pages.each do |pp| %>
-  <a href="/?page=<%= pp.index +1 %>"><%= pp.index + 1 %></a>
+<% @post_pages.each_index do |pp| %>
+  <a href="/?page=<%= pp + 1 %>"><%= pp + 1 %></a>
 <% end %>
 </div>

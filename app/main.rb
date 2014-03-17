@@ -18,12 +18,15 @@ class MainProgram < Sinatra::Base
       
    #homepage
    get "/" do
-      @page = params{:page} || 1
+      
+      params[:page]? @page = params[:page].to_i : @page = 1
+      
       posts = Post.all
       @post_pages = []
-      posts.each_slice(100) do |slice|
+      posts.each_slice(@set.main_posts) do |slice|
          @post_pages << slice
       end
+      
       @posts = @post_pages[@page - 1]
       
       erb :homepage
